@@ -22,41 +22,16 @@ include_once '../models/ProductsModel.php';
 function addtocartAction()
 {
     $itemId = isset($_GET['id']) ? intval($_GET['id']) : null;
-//    d($itemId);
     if (!$itemId) return false;
-
+    d($itemId);
     $resData = array();
 
     // если значение не найдено, то добавляем
     if (isset($_SESSION['cart']) && array_search($itemId, $_SESSION['cart']) === false) {
         $_SESSION['cart'][] = $itemId;
-        $resData['cntItems'] = count($_SESSION['cart']);
+        $resData['quantityItems'] = count($_SESSION['cart']);
         $resData['success'] = 1;
     } else {
-        $resData['success'] = 0;
-    }
-    d($resData);
-    echo json_encode($resData);
-}
-
-/**
- * Удаление продукта из корзины
- *
- * @param integer id GET параметр - id удаляемого из корзины продукта
- * @return json информацио об опечатках (успех, количество элементов в корзине)
- */
-function removefromcartAction()
-{
-    $itemId = isset($_GET['id']) ? intval($_GET['id']) : null;
-    if(!$itemId) exit();
-
-    $resData = array();
-    $key = array_search($itemId, $_SESSION['cart']);
-    if($key !== false){
-        unset($_SESSION['cart'][$key]);
-        $resData['success'] = 1;
-        $resData['cntItems'] = count($_SESSION['cart']);
-    } else{
         $resData['success'] = 0;
     }
 

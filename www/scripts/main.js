@@ -4,8 +4,6 @@
  * @param integer itemId ID продукта
  * @return в случае успеха обновятся данные корзины на странице
  */
-
-
 function addToCart(itemId) {
     console.log("js - addToCart()");
     $.ajax({
@@ -13,10 +11,9 @@ function addToCart(itemId) {
         async: false,
         url: "/cart/addtocart/" + itemId + '/',
         dataType: 'json',
-
         success: function (data) {
             if (data['success']) {
-                $('#cartCntItems').html(data['cntItems']);
+                $('#cartQuantityItems').html(data['quantityItems']);
 
                 $('#addCart_' + itemId).hide();
                 $('#removeCart_' + itemId).show();
