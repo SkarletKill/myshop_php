@@ -23,7 +23,7 @@ function addtocartAction()
 {
     $itemId = isset($_GET['id']) ? intval($_GET['id']) : null;
     if (!$itemId) return false;
-    d($itemId);
+//    d($itemId);
     $resData = array();
 
     // если значение не найдено, то добавляем
