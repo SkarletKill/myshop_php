@@ -58,3 +58,19 @@ function getProductById($itemId){
     $rs = $builer->execQuery($query);
     return $rs->fetch();
 }
+
+/**
+ * Получить список продуктов из масива идентификаторов (ID's)
+ *
+ * @param array $itemsId массив идентификаторов продуктов
+ * @return array массив данных продуктов
+ */
+function getProductsFromArray($itemsId){
+    $strIds = implode($itemsId, ', ')?? '0';
+    if($strIds == '') $strIds = '0';
+    $query = "SELECT * FROM products WHERE id in({$strIds})";
+    $builder = new SQLBuilder();
+    $rs = $builder->execQuery($query);
+
+    return createSmartyRsArray($rs);
+}
