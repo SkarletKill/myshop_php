@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2018-05-27 18:25:50
+<?php /* Smarty version Smarty-3.1.6, created on 2018-05-29 11:48:00
          compiled from "../views/default\leftcolumn.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9350694365b06d16b6b2ed8-62419100%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd86026e14cd6d235743b3882c7fc10799a2fe413' => 
     array (
       0 => '../views/default\\leftcolumn.tpl',
-      1 => 1527444617,
+      1 => 1527594448,
       2 => 'file',
     ),
   ),
@@ -52,6 +52,19 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
                 <?php } ?>
             <?php }?>
         <?php } ?>
+    </div>
+
+    <div id="registerBox">
+        <div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
+        <div class="registerBoxHidden">
+            email:<br/>
+            <input type="text" id="email" name="email" value=""/><br/>
+            password:<br/>
+            <input type="password" id="pasw1" name="pasw1" value=""/><br/>
+            repeat password:<br/>
+            <input type="password" id="pasw2" name="pasw2" value=""/><br/>
+            <input type="button" onclick="registerNewUser();" value="Зарегестрироватся"/><br/>
+        </div>
     </div>
 
     <div class="menuCaption">Корзина<div/>

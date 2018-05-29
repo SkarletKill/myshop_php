@@ -58,3 +58,54 @@ function conversionPrice(itemId) {
 
     $('#itemRealPrice_' + itemId).html(itemRealPrice);
 }
+
+/**
+ * Получение данных с формы
+ *
+ */
+function getData(obj_form) {
+    var hData = {};
+    $('input, textarea, select', obj_form).each(function () {
+        if (this.name && this.name != '') {
+            hData[this.name] = this.value;
+            console.log('hData[' + this.name + '] = ' + hData[this.name]);
+        }
+    });
+    return hData;
+}
+
+/**
+ * Регистрация нового пользователя
+ *
+ */
+function registerNewUser() {
+    var posData = getData('#registerBox');
+
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/user/register/",
+        data: posData,
+        dataType: 'json',
+        success: function (data) {
+            if (data['success']) {
+                alert('Registration successful');
+
+                //> блок в левом столбце
+                $('#registerBox').hide();
+
+                // $('#userLink').attr('href', '/user/');
+                // $('#userLink').html(data['userName']);
+                // $('#userBox').show();
+                //<
+
+                //> страница заказа
+                // $('#loginBox').hide();
+                // $('#btnSaveOrder').show();
+                //<
+            } else {
+                alert(data['message']);
+            }
+        }
+    });
+}
