@@ -16,6 +16,7 @@
         {/foreach}
     </div>
 
+
     {if isset($arrUser)}
         <div id="userBox">
             <a href="/user/" id="userLink">{$arrUser['displayName']}</a><br/>
@@ -47,10 +48,10 @@
     {/if}
 
     <div class="menuCaption">Корзина
-        <div/>
+        <div></div>
         <a href="/cart/" title="Перейти в корзину">В корзине</a>
         <span id="cartQuantityItems">
-        {if $cartQuantityItems > 0}{$cartQuantityItems}{else}пусто{/if}
-    </span>
-
+            {if $cartQuantityItems > 0}{$cartQuantityItems}{else}пусто{/if}
+        </span>
     </div>
+</div>

@@ -11,6 +11,3 @@
         <div style="clear: both;"></div>
     {/if}
 {/foreach}
-
-
-

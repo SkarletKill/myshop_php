@@ -7,10 +7,10 @@
     <script type="text/javascript" src="/scripts/main.js"></script>
 </head>
 <body>
-<div id="header">
-    <h1>My Shop</h1>
-</div>
+    <div id="header">
+        <h1>My Shop</h1>
+    </div>
 
-{include file='leftcolumn.tpl'}
+    {include file='leftcolumn.tpl'}
 
-<div id="centerColumn">
+    <div id="centerColumn">

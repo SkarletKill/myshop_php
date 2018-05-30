@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2018-05-30 08:47:06
+<?php /* Smarty version Smarty-3.1.6, created on 2018-05-30 09:56:16
          compiled from "../views/default\leftcolumn.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:9350694365b06d16b6b2ed8-62419100%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:19678381185b0e74b41d4357-31502722%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'd86026e14cd6d235743b3882c7fc10799a2fe413' => 
     array (
       0 => '../views/default\\leftcolumn.tpl',
-      1 => 1527670025,
+      1 => 1527674173,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '9350694365b06d16b6b2ed8-62419100',
+  'nocache_hash' => '19678381185b0e74b41d4357-31502722',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_5b06d16b6bea5',
+  'unifunc' => 'content_5b0e74b428fb8',
   'variables' => 
   array (
     'rsCategories' => 0,
@@ -27,7 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5b06d16b6bea5')) {function content_5b06d16b6bea5($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_5b0e74b428fb8')) {function content_5b0e74b428fb8($_smarty_tpl) {?>
 <div id="leftColumn">
 
     <div id="leftMenu">
@@ -56,6 +56,7 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
             <?php }?>
         <?php } ?>
     </div>
+
 
     <?php if (isset($_smarty_tpl->tpl_vars['arrUser']->value)){?>
         <div id="userBox">
@@ -89,11 +90,11 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
     <?php }?>
 
     <div class="menuCaption">Корзина
-        <div/>
+        <div></div>
         <a href="/cart/" title="Перейти в корзину">В корзине</a>
         <span id="cartQuantityItems">
-        <?php if ($_smarty_tpl->tpl_vars['cartQuantityItems']->value>0){?><?php echo $_smarty_tpl->tpl_vars['cartQuantityItems']->value;?>
+            <?php if ($_smarty_tpl->tpl_vars['cartQuantityItems']->value>0){?><?php echo $_smarty_tpl->tpl_vars['cartQuantityItems']->value;?>
 <?php }else{ ?>пусто<?php }?>
-    </span>
-
-    </div><?php }} ?>
+        </span>
+    </div>
+</div><?php }} ?>
