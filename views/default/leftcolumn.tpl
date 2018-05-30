@@ -34,7 +34,7 @@
         </div>
         <div id="registerBox">
             <div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
-            <div class="registerBoxHidden">
+            <div id="registerBoxHidden">
                 email:<br/>
                 <input type="text" id="email" name="email" value=""/><br/>
                 password:<br/>

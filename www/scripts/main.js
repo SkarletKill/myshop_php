@@ -147,3 +147,15 @@ function login() {
         }
     });
 }
+
+/**
+ * Показать или прятать форму регистрации
+ *
+ */
+function showRegisterBox() {
+    if($('#registerBoxHidden').css('display') != 'block'){
+        $('#registerBoxHidden').show();
+    } else {
+        $('#registerBoxHidden').hide();
+    }
+}

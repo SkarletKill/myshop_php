@@ -111,3 +111,20 @@ function loginAction()
 
     echo json_encode($resData);
 }
+
+function indexAction($smarty){
+    //если пользователь не залогинен, то редирект на главную страницу
+    if(!isset($_SESSION['user'])){
+        redirect('/');
+    }
+
+    //получаем список категорий для меню
+    $rsCategories = getAllMainCategoriesWithChildren();
+
+    $smarty->assign('pageTitle', 'Страница пользователя');
+    $smarty->assign('rsCategories', $rsCategories);
+
+    loadTemplate($smarty, 'header');
+    loadTemplate($smarty, 'user');
+    loadTemplate($smarty, 'footer');
+}
