@@ -94,15 +94,53 @@ function registerNewUser() {
                 //> блок в левом столбце
                 $('#registerBox').hide();
 
-                // $('#userLink').attr('href', '/user/');
-                // $('#userLink').html(data['userName']);
-                // $('#userBox').show();
+                $('#userLink').attr('href', '/user/');
+                $('#userLink').html(data['userName']);
+                $('#userBox').show();
                 //<
 
                 //> страница заказа
                 // $('#loginBox').hide();
                 // $('#btnSaveOrder').show();
                 //<
+            } else {
+                alert(data['message']);
+            }
+        }
+    });
+}
+
+/**
+ * !!! function not complete
+ */
+function logout() {
+
+}
+
+/**
+ * Авторизация пользователя
+ *
+ */
+function login() {
+    var email = $('#loginEmail').val();
+    var pass = $('#loginPasw').val();
+
+    var postData = "email=" + email + "&pasw=" + pass;
+
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/user/login/",
+        data: postData,
+        dataType: 'json',
+        success: function(data){
+            if(data['success']){
+                $('#registerBox').hide();
+                $('#loginBox').hide();
+
+                $('#userLink').attr('href', '/user/');
+                $('#userLink').html(data['displayName']);
+                $('#userBox').show();
             } else {
                 alert(data['message']);
             }

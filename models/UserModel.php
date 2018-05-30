@@ -97,3 +97,29 @@ function checkUserEmail($email){
 
     return $rs;
 }
+
+/**
+ * Авторизация пользователя
+ *
+ * @param string $email почта (логин)
+ * @param string $pass пароль
+ * @return array масив данных пользователя
+ */
+function loginUser($email, $pass){
+    global $connection;
+    $email = htmlspecialchars(mysqli_real_escape_string($connection, $email));
+    $pass = md5($pass);
+
+    $query = "SELECT * FROM users WHERE (`email` = '{$email}' AND `pasw` = '{$pass}') LIMIT 1";
+    $builder = new SQLBuilder();
+    $rs = $builder->execQuery($query);
+    $rs = createSmartyRsArray($rs);
+
+    if(isset($rs[0])){
+        $rs['success'] = 1;
+    } else{
+        $rs['success'] = 0;
+    }
+
+    return $rs;
+}

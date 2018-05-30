@@ -1,6 +1,7 @@
 <?php
 
-session_start();        //запускаем сессию
+session_start();            //запускаем сессию
+define('ROOT', __DIR__);    //корневая директория
 
 // если в сессии нет масива корзины то создаем его
 if (!isset($_SESSION['cart'])) {
@@ -16,6 +17,12 @@ $controllerName = isset($_GET['controller']) ? ucfirst($_GET['controller']) : 'I
 
 //determine method for working
 $actionName = isset($_GET['action']) ? $_GET['action'] : 'index';
+
+// если в сессии есть данные об авторизованом пользователе,
+// то передаем их в шаблон
+if (isset($_SESSION['user'])) {
+    $smarty->assign('arrUser', $_SESSION['user']);
+}
 
 // инициализируем переменную шаблонизатора - количество элементов в корзине
 $smarty->assign('cartQuantityItems', count($_SESSION['cart']));
