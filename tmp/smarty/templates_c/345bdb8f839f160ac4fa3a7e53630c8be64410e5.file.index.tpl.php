@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2018-05-30 09:53:56
+<?php /* Smarty version Smarty-3.1.6, created on 2018-05-30 09:58:21
          compiled from "../views/default\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20855227585b0e74b42ab108-71328084%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '345bdb8f839f160ac4fa3a7e53630c8be64410e5' => 
     array (
       0 => '../views/default\\index.tpl',
-      1 => 1527344183,
+      1 => 1527674234,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.6',
+  'unifunc' => 'content_5b0e74b432812',
   'variables' => 
   array (
     'rsProducts' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_5b0e74b432812',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5b0e74b432812')) {function content_5b0e74b432812($_smarty_tpl) {?>
 
@@ -48,7 +48,4 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
         <div style="clear: both;"></div>
     <?php }?>
 <?php } ?>
-
-
-
 <?php }} ?>

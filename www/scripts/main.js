@@ -133,8 +133,8 @@ function login() {
         url: "/user/login/",
         data: postData,
         dataType: 'json',
-        success: function(data){
-            if(data['success']){
+        success: function (data) {
+            if (data['success']) {
                 $('#registerBox').hide();
                 $('#loginBox').hide();
 
@@ -153,9 +153,33 @@ function login() {
  *
  */
 function showRegisterBox() {
-    if($('#registerBoxHidden').css('display') != 'block'){
+    if ($('#registerBoxHidden').css('display') != 'block') {
         $('#registerBoxHidden').show();
     } else {
         $('#registerBoxHidden').hide();
     }
+}
+
+/**
+ * Обновление данных пользователя
+ *
+ */
+function updateUserData() {
+    console.log("js - updateUserData()");
+    var name = $('#newName').val();
+    var phone = $('#newPhone').val();
+    var address = $('#newAddress').val();
+    var pass1 = $('#newPasw1').val();
+    var pass2 = $('#newPasw2').val();
+    var currPass = $('#currPasw').val();
+
+    var posData = {
+        name: name,
+        phone: phone,
+        address: address,
+        pass1: pass1,
+        pass2: pass2,
+        currPass: currPass
+    };
+
 }

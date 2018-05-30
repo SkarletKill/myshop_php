@@ -96,7 +96,7 @@ class SQLBuilder
         $this->upd = true;
         $values = $this->addScope($values);
         $parameters_inline = implode(", ", $values);
-        $this->update_parameters = $parameters_inline;
+        $this->update_parameters .= ($this->update_parameters == '') ? $parameters_inline : ', ' . $parameters_inline;
         return $this;
     }
 
@@ -133,11 +133,13 @@ class SQLBuilder
     public function useAnd()
     {
         $this->concatenator = " AND ";
+        return $this;
     }
 
     public function useOR()
     {
         $this->concatenator = " OR ";
+        return $this;
     }
 
     public function orderBy(...$values)
@@ -166,11 +168,11 @@ class SQLBuilder
                 $this->query = $this->query . "(" . $this->insert_fields . ")";
             }
             $this->query = $this->query . " VALUES(";
-                $placeholders = '';
-                for ($i = 0; $i < count($this->insert_parameters); $i++){
-                    $placeholders =$placeholders . '?,';
-                }
-                $placeholders = trim($placeholders, ',');
+            $placeholders = '';
+            for ($i = 0; $i < count($this->insert_parameters); $i++) {
+                $placeholders = $placeholders . '?,';
+            }
+            $placeholders = trim($placeholders, ',');
             $this->query = $this->query . $placeholders . ")";
             $this->query_parameters = $this->insert_parameters;
         } elseif ($this->upd) {
@@ -214,12 +216,12 @@ class SQLBuilder
 //        $this->getQuery();
         $stmt = null;
         if ($debug == true) {
-            if(empty($this->query_parameters))
+            if (empty($this->query_parameters))
                 $stmt = $this->db->dsql('positional', $this->query);
             else
                 $stmt = $this->db->dsql('positional', $this->query, $this->query_parameters);
         } else if ($debug == false) {
-            if(empty($this->query_parameters))
+            if (empty($this->query_parameters))
                 $stmt = $this->db->sql('positional', $this->query);
             else
                 $stmt = $this->db->sql('positional', $this->query, $this->query_parameters);
@@ -227,8 +229,9 @@ class SQLBuilder
         return $stmt;
     }
 
-    public function execQuery($localQuery){
-        if(empty($this->query_parameters))
+    public function execQuery($localQuery)
+    {
+        if (empty($this->query_parameters))
             $stmt = $this->db->sql('positional', $localQuery);
         else
             $stmt = $this->db->sql('positional', $localQuery, $this->query_parameters);
