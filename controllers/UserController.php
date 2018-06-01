@@ -154,9 +154,9 @@ function updateAction()
     $name = $_REQUEST['name'] ?? null;       //need change to $_POST['name']?? null;
     $phone = $_REQUEST['phone'] ?? null;
     $address = $_REQUEST['address'] ?? null;
-    $pass1 = $_REQUEST['pasw1'] ?? null;
-    $pass2 = $_REQUEST['pasw2'] ?? null;
-    $currPass = $_REQUEST['currPasw'] ?? null;
+    $pass1 = $_REQUEST['pass1'] ?? null;
+    $pass2 = $_REQUEST['pass2'] ?? null;
+    $currPass = $_REQUEST['currPass'] ?? null;
     //<
 
     // проверка правильности пароля
@@ -178,7 +178,11 @@ function updateAction()
         $_SESSION['user']['name'] = $name;
         $_SESSION['user']['phone'] = $phone;
         $_SESSION['user']['address'] = $address;
-        $_SESSION['user']['pasw'] = $currPassMD5;
+
+        if ($pass1 && ($pass1 == $pass2)) {
+            $_SESSION['user']['pasw'] = md5(trim($pass1));
+        }
+
         $_SESSION['user']['displayName'] = $name ? $name : $_SESSION['user']['email'];
     } else {
         $resData['success'] = 0;

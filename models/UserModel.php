@@ -171,11 +171,12 @@ function updateUserData($name, $phone, $address, $pass1, $pass2, $currPass)
 
     $query .= "`name` = '{$name}',
                `phone` = '{$phone}',
-               `address` = '{$address}',
+               `address` = '{$address}'
                WHERE `email` = '{$email}' AND `pasw` = '{$currPass}'
                LIMIT 1";
 
     $rs = $builder->execQuery($query);
+    return $rs;
 }
 
 /**
