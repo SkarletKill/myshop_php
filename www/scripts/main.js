@@ -141,6 +141,14 @@ function login() {
                 $('#userLink').attr('href', '/user/');
                 $('#userLink').html(data['displayName']);
                 $('#userBox').show();
+
+                //> заполняем поля на странице зкакза
+                $('#name').val(data['name']);
+                $('#phone').val(data['phone']);
+                $('#address').val(data['address']);
+                //<
+
+                $('#btnSaveOrder').show();
             } else {
                 alert(data['message']);
             }

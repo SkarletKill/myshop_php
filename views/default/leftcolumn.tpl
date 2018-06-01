@@ -27,24 +27,26 @@
             <a href="#" id="userLink"></a><br/>
             <a href="/user/logout/" onclick="logout();">Выход</a>
         </div>
-        <div id="loginBox">
-            <div class="menuCaption">Авторизация</div>
-            <input type="text" id="loginEmail" name="loginEmail" value=""/><br/>
-            <input type="password" id="loginPasw" name="loginPasw" value=""/><br/>
-            <input type="button" onclick="login();" value="Войти"/>
-        </div>
-        <div id="registerBox">
-            <div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
-            <div id="registerBoxHidden">
-                email:<br/>
-                <input type="text" id="email" name="email" value=""/><br/>
-                password:<br/>
-                <input type="password" id="pasw1" name="pasw1" value=""/><br/>
-                repeat password:<br/>
-                <input type="password" id="pasw2" name="pasw2" value=""/><br/>
-                <input type="button" onclick="registerNewUser();" value="Зарегестрироватся"/><br/>
+        {if !isset($hideLoginBox)}
+            <div id="loginBox">
+                <div class="menuCaption">Авторизация</div>
+                <input type="text" id="loginEmail" name="loginEmail" value=""/><br/>
+                <input type="password" id="loginPasw" name="loginPasw" value=""/><br/>
+                <input type="button" onclick="login();" value="Войти"/>
             </div>
-        </div>
+            <div id="registerBox">
+                <div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
+                <div id="registerBoxHidden">
+                    email:<br/>
+                    <input type="text" id="email" name="email" value=""/><br/>
+                    password:<br/>
+                    <input type="password" id="pasw1" name="pasw1" value=""/><br/>
+                    repeat password:<br/>
+                    <input type="password" id="pasw2" name="pasw2" value=""/><br/>
+                    <input type="button" onclick="registerNewUser();" value="Зарегестрироватся"/><br/>
+                </div>
+            </div>
+        {/if}
     {/if}
 
     <div class="menuCaption">Корзина
