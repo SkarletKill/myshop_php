@@ -30,7 +30,7 @@ function registerAction()
 
     $phone = $_REQUEST['phone'] ?? null;
     $address = $_REQUEST['address'] ?? null;
-    $name = $_REQUEST['name '] ?? null;
+    $name = $_REQUEST['name'] ?? null;
     $name = trim($name);
 
 

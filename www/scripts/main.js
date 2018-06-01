@@ -100,8 +100,8 @@ function registerNewUser() {
                 //<
 
                 //> страница заказа
-                // $('#loginBox').hide();
-                // $('#btnSaveOrder').show();
+                $('#loginBox').hide();
+                $('#btnSaveOrder').show();
                 //<
             } else {
                 alert(data['message']);
