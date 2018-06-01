@@ -12,6 +12,8 @@
 // подключаем модели
 include_once '../models/CategoriesModel.php';
 include_once '../models/ProductsModel.php';
+include_once '../models/OrdersModel.php';
+include_once '../models/PurchaseModel.php';
 
 /**
  * Добавление продукта в корзину
@@ -141,7 +143,7 @@ function orderAction($smarty)
 
     // hideLoginBox - переменная-флаг для того чтобы спрятать блоки
     // логина и регистрации в боковой панели
-    if(!isset($_SESSION['user'])){
+    if (!isset($_SESSION['user'])) {
         $smarty->assign('hideLoginBox', 1);
     }
 
@@ -152,4 +154,32 @@ function orderAction($smarty)
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'order');
     loadTemplate($smarty, 'footer');
+}
+
+/**
+ * AJAX функция сохранения зкакза
+ *
+ * @param array $_SESSION ['saleCart'] массив покупаемых продуктов
+ * @return json информация о результате выполнения
+ */
+function saveorderAction()
+{
+    // получаем массив покупаемых товаров
+    $cart = $_SESSION['saleCart'] ?? null;
+    // если корзина пуста, то формируем ответ с ошибкой,
+    // отдаем его в формате json и выходим из функции
+    if (!$cart) {
+        $resData['success'] = 0;
+        $resData['message'] = 'Нет товаров для заказа';
+        echo json_encode($resData);
+        return;
+    }
+
+    $name = $_POST['name'] ?? null;
+    $phone = $_POST['phone'] ?? null;
+    $address = $_POST['address'] ?? null;
+
+    // создаем новый заказ и получаем его ID
+    $orderId = makeNewOrder($name, $phone, $address);
+
 }
