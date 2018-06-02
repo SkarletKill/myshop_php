@@ -196,8 +196,8 @@ function updateUserData() {
         url: "/user/update/",
         data: postData,
         dataType: 'json',
-        success: function(data){
-            if(data['success']){
+        success: function (data) {
+            if (data['success']) {
                 $('#userLink').html(data['userName']);
                 alert(data['message']);
             } else {
@@ -220,7 +220,7 @@ function saveOrder() {
         data: postData,
         dataType: 'json',
         success: function (data) {
-            if(data['success']){
+            if (data['success']) {
                 alert(data['message']);
                 document.location = '/';    //redirect('/')
             } else {
@@ -228,4 +228,18 @@ function saveOrder() {
             }
         }
     });
+}
+
+/**
+ * Показывать или прятать данные о заказе
+ *
+ * @param id код заказа
+ */
+function showProducts(id) {
+    var objName = "#purchaseForOrderId_" + id;
+    if ($(objName).css('display') != 'table-row') {
+        $(objName).show();
+    } else {
+        $(objName).hide();
+    }
 }

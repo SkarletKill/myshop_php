@@ -33,3 +33,11 @@ function setPurchaseForOrder($orderId, $cart)
 
     return $rs;
 }
+
+function getPurchaseForOrder($orderId){
+    $query = "SELECT `pe`.*, `ps`.`name` FROM purchase as `pe` JOIN products as `ps` ON `pe`.product_id = `ps`.id
+              WHERE `pe`.order_id = '{$orderId}'";
+    $builder = new SQLBuilder();
+    $rs = $builder->execQuery($query);
+    return createSmartyRsArray($rs);
+}

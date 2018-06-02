@@ -12,6 +12,8 @@
 //подключаем модели
 include_once '../models/CategoriesModel.php';
 include_once '../models/UserModel.php';
+include_once '../models/OrdersModel.php';
+include_once '../models/PurchaseModel.php';
 
 /**
  * AJAX регистрация пользователя
@@ -128,8 +130,12 @@ function indexAction($smarty)
     //получаем список категорий для меню
     $rsCategories = getAllMainCategoriesWithChildren();
 
+    // получаем список заказова пользователя
+    $rsUserOrders = getCurUserOrders();
+
     $smarty->assign('pageTitle', 'Страница пользователя');
     $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsUserOrders', $rsUserOrders);
 
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'user');

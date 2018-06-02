@@ -49,3 +49,30 @@ function makeNewOrder($name, $phone, $address)
         }
     }
 }
+
+/**
+ * Получить список заказов с привязкой к продуктам для пользователя с $userId
+ *
+ * @param integer $userId ID пользователя
+ * @return array массив заказов с привязкой к продуктам
+ */
+function getOrdersWithProductsByUser($userId)
+{
+    $userId = intval($userId);
+    $query = "SELECT * FROM orders WHERE `user_id` = '{$userId}' ORDER BY id DESC";
+
+    $builder = new SQLBuilder();
+    $rs = $builder->execQuery($query);
+
+    $smartyRs = array();
+    while ($row = $rs->fetch()) {
+        $rsChildren = getPurchaseForOrder($row['id']);
+
+        if ($rsChildren) {
+            $row['children'] = $rsChildren;
+            $smartyRs[] = $row;
+        }
+    }
+
+    return $smartyRs;
+}

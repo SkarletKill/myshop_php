@@ -187,9 +187,23 @@ function updateUserData($name, $phone, $address, $pass1, $pass2, $currPass)
  * @param string $value значение которое необходимо установить
  * @return SQLBuilder $builder
  */
-function updateWithVerification($builder, $field, $value){
+function updateWithVerification($builder, $field, $value)
+{
     if ($value && $value !== '') {
         $builder->update("`{$field}` = '{$value}'");
     }
     return $builder;
+}
+
+/**
+ * Получить данные заказа текущего пользователя
+ *
+ * @return array массив заказов с привязкй к продуктам
+ */
+function getCurUserOrders()
+{
+    $userId = $_SESSION['user']['id'] ?? 0;
+    $rs = getOrdersWithProductsByUser($userId);
+
+    return $rs;
 }
